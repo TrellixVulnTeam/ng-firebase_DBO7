@@ -1,4 +1,10 @@
 import { Component } from '@angular/core';
+import { environment } from './../environments/environment';
+
+// Firebase
+import {AngularFireDatabase} from 'angularfire2/database';
+
+
 
 @Component({
   selector: 'app-root',
@@ -6,5 +12,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app';
+
+  constructor(db: AngularFireDatabase) {
+
+  }
+
 }

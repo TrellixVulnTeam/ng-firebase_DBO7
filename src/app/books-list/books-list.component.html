@@ -1,0 +1,13 @@
+<ul>
+  <div *ngFor="let book of booksObservable | async">
+    <ngb-alert type="info" [dismissible]="false">
+      <h3>
+        <a href="#">{{book.title}}</a>
+      </h3>
+      <!--<p>{{book.description}}</p>
+      <div>
+        <a href="{{book.url}}" target="_blank" class="btn btn-danger">Go To Course</a>
+      </div>-->
+    </ngb-alert>
+  </div>
+</ul>
