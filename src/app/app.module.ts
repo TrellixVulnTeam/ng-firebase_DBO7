@@ -14,6 +14,7 @@ import { AppNavbarComponent } from './app-navbar/app-navbar.component';
 import { BooksListComponent } from './books-list/books-list.component';
 import { LoginModalComponent } from './login-modal/login-modal.component';
 import { AppNavbarModule } from './app-navbar/app-navbar.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -25,11 +26,13 @@ import { AppNavbarModule } from './app-navbar/app-navbar.module';
   ],
   imports: [
     BrowserModule,
+    ReactiveFormsModule,
+    FormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     NgbModule.forRoot(),
-    AppNavbarModule
+    AppNavbarModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

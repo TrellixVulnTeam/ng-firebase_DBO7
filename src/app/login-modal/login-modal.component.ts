@@ -1,5 +1,6 @@
-import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login-modal',
@@ -8,7 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginModalComponent implements OnInit {
 
-  constructor(public activeModal: NgbActiveModal) { }
+  loginForm: FormGroup;
+
+  constructor(public activeModal: NgbActiveModal, private fb: FormBuilder) {
+    this.loginForm = fb.group({
+      'login' : [null, Validators.required],
+      'password' : [null, Validators.required]
+    });
+  }
 
   ngOnInit() {
   }

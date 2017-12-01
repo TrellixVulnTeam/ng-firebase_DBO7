@@ -1,11 +1,28 @@
 <div class="modal-header">
-  <h4 class="modal-title">Hi there!</h4>
+  <h4 class="modal-title">Logowanie</h4>
   <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
     <span aria-hidden="true">&times;</span>
   </button>
 </div>
 <div class="modal-body">
-  <p>Hello!</p>
+  <form [formGroup]="loginForm" (ngSubmit)="addPost(loginForm.value)">
+    <div class="form-container">
+      <div class="row columns">
+        <label>Login
+          <input type="text" formControlName='login'>
+        </label>
+        <div class="alert" *ngIf="!loginForm.controls['login'].valid && loginForm.controls['login'].touched">Podaj login</div>
+        
+
+        <label>Description
+            <input type="text" formControlName="password">
+        </label>
+        <div class="alert" *ngIf="!loginForm.controls['password'].valid && loginForm.controls['password'].touched">Podaj hasło</div>        
+
+        <input type="submit" class="button expanded" value="Submit Form" [disabled]='!loginForm.valid'>
+      </div>
+    </div>
+  </form>
 </div>
 <div class="modal-footer">
   <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button>

@@ -14,7 +14,7 @@ export class AppNavbarComponent implements OnInit {
   constructor(private modalService: NgbModal) { }
 
   openLoginModal() {
-    const modalRef = this.modalService.open(LoginModalComponent, { size: 'lg' });
+    const modalRef = this.modalService.open(LoginModalComponent, { size: 'sm' });
   }
 
   ngOnInit() {
