@@ -8,17 +8,22 @@
     background:#fff;
 }
 
+input {
+    width: 100%;
+}
+
 .alert {
-    background: #f2edda;
     padding: 7px;
     font-size: .9em;
     margin-bottom: 20px;
     display: inline-block;
     animation: 2s alertAnim forwards;
+    width: 100%;
 }
 
 .button {
     margin-top: 3rem;
+    width: 100%;
 }
 
 h1 {

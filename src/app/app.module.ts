@@ -15,6 +15,7 @@ import { BooksListComponent } from './books-list/books-list.component';
 import { LoginModalComponent } from './login-modal/login-modal.component';
 import { AppNavbarModule } from './app-navbar/app-navbar.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { LoginModalService } from './login-modal.service';
 
 
 @NgModule({
@@ -34,7 +35,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     NgbModule.forRoot(),
     AppNavbarModule,
   ],
-  providers: [],
+  providers: [LoginModalService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

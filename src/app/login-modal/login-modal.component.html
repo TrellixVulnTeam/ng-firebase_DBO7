@@ -1,29 +1,50 @@
 <div class="modal-header">
-  <h4 class="modal-title">Logowanie</h4>
+  <h4 class="modal-title">Sign in</h4>
   <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
     <span aria-hidden="true">&times;</span>
   </button>
 </div>
 <div class="modal-body">
-  <form [formGroup]="loginForm" (ngSubmit)="addPost(loginForm.value)">
-    <div class="form-container">
-      <div class="row columns">
-        <label>Login
-          <input type="text" formControlName='login'>
-        </label>
-        <div class="alert" *ngIf="!loginForm.controls['login'].valid && loginForm.controls['login'].touched">Podaj login</div>
-        
+  <ngb-tabset type="pills">
+    <ngb-tab title="Logowanie">
+      <ng-template ngbTabContent>
+        <form [formGroup]="loginForm" (ngSubmit)="onLoginSubmit(loginForm)">
+          <div class="form-container">
+            <div class="row columns">
+              <label>Email:
+                <input type="email" formControlName='login'>
+              </label>
+              <div class="alert alert-danger" *ngIf="!loginForm.controls['login'].valid && loginForm.controls['login'].touched">Podaj adres e-mail jako login</div>
+              <label>Hasło:
+                <input type="password" formControlName="password">
+              </label>
+              <div class="alert alert-danger" *ngIf="!loginForm.controls['password'].valid && loginForm.controls['password'].touched">Podaj hasło</div>
 
-        <label>Description
-            <input type="text" formControlName="password">
-        </label>
-        <div class="alert" *ngIf="!loginForm.controls['password'].valid && loginForm.controls['password'].touched">Podaj hasło</div>        
+              <input type="submit" class="btn btn-success button expanded" value="Zaloguj się" [disabled]='!loginForm.valid'>
+            </div>
+          </div>
+        </form>
+      </ng-template>
+    </ngb-tab>
+    <ngb-tab title="Rejestracja">
+      <ng-template ngbTabContent>
+        <form [formGroup]="registerForm" (ngSubmit)="onRegisterSubmit(registerForm)">
+          <div class="form-container">
+            <div class="row columns">
+              <label>Email:
+                <input type="email" formControlName='login'>
+              </label>
+              <div class="alert alert-danger" *ngIf="!registerForm.controls['login'].valid && registerForm.controls['login'].touched">Podaj adres e-mail jako login</div>
+              <label>Hasło:
+                <input type="password" formControlName="password">
+              </label>
+              <div class="alert alert-danger" *ngIf="!registerForm.controls['password'].valid && registerForm.controls['password'].touched">Podaj hasło</div>
 
-        <input type="submit" class="button expanded" value="Submit Form" [disabled]='!loginForm.valid'>
-      </div>
-    </div>
-  </form>
-</div>
-<div class="modal-footer">
-  <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button>
+              <input type="submit" class="btn btn-success button expanded" value="Zarejestruj się" [disabled]='!registerForm.valid'>
+            </div>
+          </div>
+        </form>
+      </ng-template>
+    </ngb-tab>
+  </ngb-tabset>
 </div>
