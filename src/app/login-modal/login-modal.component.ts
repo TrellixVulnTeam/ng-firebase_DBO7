@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LoginModalService } from '../login-modal.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import * as firebase from 'firebase/app';
 
 @Component({
   selector: 'app-login-modal',
@@ -13,6 +14,7 @@ export class LoginModalComponent implements OnInit {
 
   registerForm: FormGroup;
   loginForm: FormGroup;
+  user = firebase.auth().currentUser;
 
   constructor(public activeModal: NgbActiveModal, private fb: FormBuilder, public authService: LoginModalService, private router: Router) {
 
@@ -28,11 +30,14 @@ export class LoginModalComponent implements OnInit {
 
   }
 
+  getUserCredentials() {
+    console.log(this.user.getIdToken());
+  }
+
   onLoginSubmit( loginForm ) {
     if ( loginForm.valid ) {
       console.log(loginForm.value);
       this.authService.login(this.loginForm.value.login, this.loginForm.value.password);
-      this.router.navigate(['/add-book']);
     }
   }
 

@@ -4,14 +4,16 @@ import { AngularFireDatabase } from 'angularfire2/database';
 import { AngularFireAuth, FirebaseAuthStateObservable } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
 import { Observable } from 'rxjs/Observable';
+import { Router } from '@angular/router';
 
 
 @Injectable()
 export class LoginModalService {
 
   user: Observable<firebase.User>;
+  userCredentials = firebase.auth().currentUser;
 
-  constructor(private firebaseAuth: AngularFireAuth) {
+  constructor(private firebaseAuth: AngularFireAuth, private router: Router) {
     this.user = firebaseAuth.authState;
   }
 
@@ -33,6 +35,7 @@ export class LoginModalService {
     .signInWithEmailAndPassword(email, password)
     .then(value => {
       console.log('Login succeed');
+      this.router.navigate(['/add-book']);
     })
     .catch(err => {
       console.log('Login failed', err.message);
