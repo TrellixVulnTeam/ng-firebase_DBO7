@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
+import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { environment } from '../environments/environment';
 
@@ -16,14 +16,25 @@ import { LoginModalComponent } from './login-modal/login-modal.component';
 import { AppNavbarModule } from './app-navbar/app-navbar.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginModalService } from './login-modal.service';
+import { AddBookComponent } from './add-book/add-book.component';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { HomeComponent } from './home/home.component';
 
+const routes: Routes = [
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: 'home', component: HomeComponent },
+  { path: 'add-book', component: AddBookComponent },
+  { path: 'books-list', component: BooksListComponent }
+];
 
 @NgModule({
   declarations: [
     AppComponent,
     AppNavbarComponent,
     BooksListComponent,
-    LoginModalComponent
+    LoginModalComponent,
+    AddBookComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -33,9 +44,14 @@ import { LoginModalService } from './login-modal.service';
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     NgbModule.forRoot(),
+    RouterModule.forRoot(routes),
     AppNavbarModule,
   ],
   providers: [LoginModalService],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }
+
+platformBrowserDynamic().bootstrapModule(AppModule)
+.catch((err: any) => console.error(err));

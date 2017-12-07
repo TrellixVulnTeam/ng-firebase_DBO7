@@ -1,12 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { Observable } from 'rxjs/Observable';
+import {Routes, RouterModule} from '@angular/router';
 
 @Component({
   selector: 'books-list',
   templateUrl: './books-list.component.html',
   styleUrls: ['./books-list.component.css']
 })
+
 export class BooksListComponent implements OnInit {
 
   booksObservable: Observable<any>;

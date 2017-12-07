@@ -1,0 +1,37 @@
+.card-block {
+    padding: 10px 0 10px 0;
+    background-color: #eeeeee;
+}
+
+form {
+    padding: 0 20px 0 20px;
+}
+
+input {
+    border-top: 0;
+    border-right: 0;
+    border-left: 0;
+    border-radius: 0px;
+    border-width: 2.5px;
+    background-color: #eeeeee;
+}
+
+.alert {
+    margin-top: 10px;
+}
+
+input:focus {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    background-color: #eeeeee;
+    border-color: #31bb8d;
+}
+
+.card-header {
+    background-color: #31bb8d;
+    color: white;
+}
+
+button {
+    background-color: #31bb8d;
+}

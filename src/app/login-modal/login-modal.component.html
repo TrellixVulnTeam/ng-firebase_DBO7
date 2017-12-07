@@ -39,7 +39,6 @@
                 <input type="password" formControlName="password">
               </label>
               <div class="alert alert-danger" *ngIf="!registerForm.controls['password'].valid && registerForm.controls['password'].touched">Podaj hasło</div>
-
               <input type="submit" class="btn btn-success button expanded" value="Zarejestruj się" [disabled]='!registerForm.valid'>
             </div>
           </div>

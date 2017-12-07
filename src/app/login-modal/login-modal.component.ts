@@ -2,6 +2,7 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LoginModalService } from '../login-modal.service';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-login-modal',
@@ -13,7 +14,7 @@ export class LoginModalComponent implements OnInit {
   registerForm: FormGroup;
   loginForm: FormGroup;
 
-  constructor(public activeModal: NgbActiveModal, private fb: FormBuilder, public authService: LoginModalService) {
+  constructor(public activeModal: NgbActiveModal, private fb: FormBuilder, public authService: LoginModalService, private router: Router) {
 
     this.loginForm = fb.group({
       'login': [null, Validators.compose([Validators.required, Validators.pattern('[^ @]*@[^ @]*')])],
@@ -27,14 +28,15 @@ export class LoginModalComponent implements OnInit {
 
   }
 
-  onLoginSubmit(loginForm) {
-    if(loginForm.valid) {
+  onLoginSubmit( loginForm ) {
+    if ( loginForm.valid ) {
       console.log(loginForm.value);
       this.authService.login(this.loginForm.value.login, this.loginForm.value.password);
+      this.router.navigate(['/add-book']);
     }
   }
 
-  onRegisterSubmit(registerForm) {
+  onRegisterSubmit( registerForm ) {
     if (registerForm.valid) {
       console.log(registerForm.value);
       this.authService.signup(this.registerForm.value.login, this.registerForm.value.password);

@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-  <a class="navbar-brand" href="#">Navbar</a>
+  <a class="navbar-brand" href="#"><i class="fa fa-book" aria-hidden="true"></i> ReadMe</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -9,24 +9,16 @@
         <a class="nav-link" *ngIf="authService.user | async">{{ (authService.user | async)?.email }}</a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" routerLink="/add-book" href="#">Właśnie przeczytałem<span class="sr-only"></span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
-      </li>
-      <li class="nav-item dropdown" ngbDropdown>
-        <a class="nav-link dropdown-toggle" id="dropdown01" ngbDropdownToggle>Category</a>
-        <div class="dropdown-menu" aria-labelledby="dropdown01" ngbDropdownMenu>
-          <a class="dropdown-item" href="#">Angular</a>
-          <a class="dropdown-item" href="#">React</a>
-          <a class="dropdown-item" href="#">Vue.js</a>
-        </div>
+        <a class="nav-link" routerLink="/books-list" href="#">Przeczytam<span class="sr-only"></span></a>        
       </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
       <button class="btn btn-info my-2 my-sm-0 login-btn" *ngIf="!(authService.user | async)" (click)="openLoginModal()" type="submit">Zaloguj</button>
-      <button class="btn btn-info my-2 my-sm-0 login-btn" *ngIf="authService.user | async" (click)="authService.logout()" type="submit">Wyloguj</button>
+      <button class="btn btn-info my-2 my-sm-0 login-btn" *ngIf="authService.user | async" (click)="authService.logout(); logout()" type="submit">Wyloguj</button>
     </form>
   </div>
 </nav>
