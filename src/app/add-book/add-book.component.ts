@@ -17,35 +17,20 @@ export class AddBookComponent implements OnInit {
 
   constructor(private fb: FormBuilder, private db: AngularFireDatabase) {
     this.addBookForm = fb.group({
-      'path' : [null, Validators.required],
       'title': [null, Validators.required],
       'description': [null, Validators.required]
     });
-    this.getUserToken();
+
   }
 
   addBookSubmit(addBookForm) {
     if (addBookForm.valid) {
       console.log('Dodano książkę: ', addBookForm.value);
-      this.db.database.ref('/Books' + '/' + this.addBookForm.value.path).set({
+      this.db.database.ref('/' + firebase.auth().currentUser.uid).child('Books').child(this.addBookForm.value.title).set({
         title: this.addBookForm.value.title,
-        description: this.addBookForm.value.description,
-        //clientId : 
+        description: this.addBookForm.value.description
       });
     }
-  }
-
-  addBook(booksPath) {
-    this.db.database.ref(booksPath + '/Angular').set({
-      title: 'Angular - the complete guide',
-      description: 'The complete guide of an Angular framework',
-    });
-  }
-
-  getUserToken() {
-    this.db.app.auth().currentUser.getIdToken().then((data) => {
-      localStorage.setItem('token', data);
-    });
   }
 
   ngOnInit() {

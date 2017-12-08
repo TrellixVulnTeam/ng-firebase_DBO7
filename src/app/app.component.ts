@@ -1,9 +1,10 @@
+import { Router } from '@angular/router';
 import { Component } from '@angular/core';
 import { environment } from './../environments/environment';
 
 // Firebase
-import {AngularFireDatabase} from 'angularfire2/database';
-
+import { AngularFireDatabase } from 'angularfire2/database';
+import * as firebase from 'firebase/app';
 
 
 @Component({
@@ -13,7 +14,7 @@ import {AngularFireDatabase} from 'angularfire2/database';
 })
 export class AppComponent {
 
-  constructor(db: AngularFireDatabase) {
+  constructor(db: AngularFireDatabase, private router: Router) {
 
   }
 

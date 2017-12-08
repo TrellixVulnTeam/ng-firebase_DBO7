@@ -3,6 +3,9 @@ import { AngularFireDatabase } from 'angularfire2/database';
 import { Observable } from 'rxjs/Observable';
 import {Routes, RouterModule} from '@angular/router';
 
+// Firebase
+import * as firebase from 'firebase/app';
+
 @Component({
   selector: 'books-list',
   templateUrl: './books-list.component.html',
@@ -16,20 +19,12 @@ export class BooksListComponent implements OnInit {
   constructor(private db: AngularFireDatabase) { }
 
   ngOnInit() {
-    this.booksObservable = this.getBooks('/Books');
-    this.addBook('/Books');
+    this.booksObservable = this.getBooks('/' + firebase.auth().currentUser.uid + '/Books');
     console.log(this.booksObservable);
   }
 
   getBooks(booksPath): Observable<any> {
     return this.db.list(booksPath).valueChanges();
-  }
-
-  addBook(booksPath) {
-    this.db.database.ref(booksPath + '/Angular').set({
-      title: 'Angular - the complete guide',
-      description: 'The complete guide of an Angular framework',
-    });
   }
 
 }
