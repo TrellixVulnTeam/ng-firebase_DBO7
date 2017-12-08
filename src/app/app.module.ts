@@ -19,6 +19,10 @@ import { LoginModalService } from './login-modal.service';
 import { AddBookComponent } from './add-book/add-book.component';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { HomeComponent } from './home/home.component';
+import {RatingModule} from "ngx-rating";
+
+// Angular star rating
+
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -46,6 +50,7 @@ const routes: Routes = [
     NgbModule.forRoot(),
     RouterModule.forRoot(routes),
     AppNavbarModule,
+    RatingModule
   ],
   providers: [LoginModalService],
   bootstrap: [AppComponent]

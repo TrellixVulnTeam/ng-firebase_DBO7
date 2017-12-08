@@ -12,6 +12,7 @@
             <div class="card-block">
               <form class="form" [formGroup]="addBookForm" (ngSubmit)="addBookSubmit(addBookForm)" role="form" autocomplete="off">
                 <div class="form-group">
+                  <p>Informacje o książce:</p>              
                   <input type="text" class="form-control" formControlName='title' placeholder="Nazwa">
                   <div class="alert alert-danger" *ngIf="!addBookForm.controls['title'].valid && addBookForm.controls['title'].touched">Nie podałeś nazwy książki</div>
                 </div>
@@ -19,6 +20,12 @@
                   <input type="text" id="book-description" class="form-control" placeholder="Opis" formControlName="description">
                   <div class="alert alert-danger" *ngIf="!addBookForm.controls['description'].valid && addBookForm.controls['description'].touched">Nie podałeś opisu książki</div>
                 </div>
+                <hr>
+                <div class="form-group">
+                  <p>Ocena:</p>
+                  <rating formControlName='rating'></rating>
+                </div>
+                <hr>
                 <div class="form-group">
                   <button type="submit" class="btn btn-success float-right" [disabled]='!addBookForm.valid'>Dodaj</button>
                 </div>
