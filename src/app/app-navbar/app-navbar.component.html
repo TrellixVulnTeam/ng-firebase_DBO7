@@ -9,10 +9,10 @@
         <a class="nav-link" *ngIf="authService.user | async">{{ (authService.user | async)?.email }}</a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link" routerLink="/add-book" href="#">Właśnie przeczytałem<span class="sr-only"></span></a>
+        <a class="nav-link" routerLink="/add-book" href="#">Nowa książka<span class="sr-only"></span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="/books-list" href="#">Przeczytam<span class="sr-only"></span></a>        
+        <a class="nav-link" routerLink="/books-list" href="#">Przeczytane pozycje<span class="sr-only"></span></a>        
       </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">
