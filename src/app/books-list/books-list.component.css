@@ -1,0 +1,11 @@
+.books { 
+    margin-top: 20px;
+}
+
+.fa-times {
+    float: right;
+}
+
+ngb-alert {
+    background-color: darkblue;
+}

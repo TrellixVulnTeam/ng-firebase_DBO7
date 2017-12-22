@@ -1,11 +1,15 @@
-<ul>
-  <div *ngFor="let book of booksObservable | async">
-    <ngb-alert type="success" [dismissible]="false">
-      <h3>
-        <a href="#">{{book.title}}</a>
-      </h3>
-      <p>{{book.description}}</p>
-      <rating [(ngModel)]="book.rating"></rating>
-    </ngb-alert>
-  </div>
-</ul>
+<section class="books-list">
+    <ul>
+      <div class="books" *ngFor="let book of booksObservable | async">
+        <ngb-alert type="info" [dismissible]="false">
+          <i class="fa fa-times" aria-hidden="true" (click)="deleteBook(book.title)"></i>
+          <h1>{{book.title}}</h1>
+          <p>{{book.description}}</p>
+          <span>
+            <i class="fa fa-bar-chart" aria-hidden="true"></i>
+          </span>
+          <rating [(ngModel)]="book.rating"></rating>
+        </ngb-alert>
+      </div>
+    </ul>
+</section>

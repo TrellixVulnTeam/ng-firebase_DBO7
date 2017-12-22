@@ -33,6 +33,7 @@ export class AddBookComponent implements OnInit {
         description: this.addBookForm.value.description,
         rating: this.addBookForm.value.rating
       });
+      this.addBookForm.reset();
     }
   }
 
